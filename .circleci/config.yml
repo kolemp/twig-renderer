@@ -20,5 +20,9 @@ jobs:
           docker build -t kolemp/twig-renderer:latest .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push CircleCI-Public/circleci-demo-docker:latest
-
+workflows:
+  version: 2
+  build_and_push:
+    jobs:
+      - build
 
