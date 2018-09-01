@@ -1,9 +1,6 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
     docker:
       - image: docker:18.03
     working_directory: /data
@@ -24,5 +21,8 @@ workflows:
   version: 2
   build_and_push:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only: master
 
