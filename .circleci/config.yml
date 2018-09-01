@@ -1,0 +1,24 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+    docker:
+      - image: docker:18.03
+    working_directory: /data
+    steps:
+      - checkout
+      # ... steps for building/testing app ...
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      # build and push Docker image
+      - run:
+        command: |
+          docker build -t kolemp/twig-renderer:latest .
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker push CircleCI-Public/circleci-demo-docker:latest
+
+
