@@ -15,6 +15,7 @@ jobs:
       - run:
           command: |
             docker build -t kolemp/twig-renderer:latest .
+            ./test.sh
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push kolemp/twig-renderer:latest
 workflows:
