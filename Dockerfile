@@ -8,6 +8,7 @@ RUN chmod +x /bin/composer
 RUN mkdir -p /var/lib/php/twig_renderer
 COPY src/ /var/lib/php/twig_renderer/src/
 COPY composer.json /var/lib/php/twig_renderer/
+COPY tests /var/lib/php/twig_renderer/tests/
 
 WORKDIR /var/lib/php/twig_renderer
 

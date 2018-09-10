@@ -4,7 +4,10 @@ require_once '/var/lib/php/twig_renderer/vendor/autoload.php';
 $filePath = $argv[1];
 
 if (!file_exists($filePath)) {
-    throw new \Exception("File '$filePath' not found!");
+    $message = "cwd: " . getcwd() . PHP_EOL;
+    exec("ls -la", $output);
+    $message .= "\ncwd files list:\n" . print_r($output, true);
+    throw new \Exception("File '$filePath' not found! \n" . $message);
 }
 
 $pathArray = explode("/", $filePath);
